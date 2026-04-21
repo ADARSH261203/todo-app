@@ -1,37 +1,25 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let btn = document.querySelector("button");
+let ul = document.querySelector("li");
+let inp =document.querySelector("input");
+btn.addEventListener("click" ,function(){
+    let item = document.createElement("li");
+    item.innerHTML=inp.value;
 
-function showTasks() {
-  let list = document.getElementById("taskList");
-  list.innerHTML = "";
+    let delBtn = document.createElement("button");
+    delBtn.innerText="delete";
+    delBtn.classList.add("delete");
 
-  tasks.forEach((task, index) => {
-    let li = document.createElement("li");
-    li.innerText = task;
+    item.appendChild(delBtn);
+    ul .appendChild(item);
+    inp.value ="";
 
-    li.onclick = () => deleteTask(index);
+});
 
-    list.appendChild(li);
-  });
-
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+let delBtns = document.querySelectorAll(".delete");
+for(delBtn of delBtns){
+    delBtn.addEventListener("click", function(){
+        let par = this.parentElement;
+        console.log(par);
+        par.remove();
+    });
 }
-
-function addTask() {
-  let input = document.getElementById("taskInput");
-
-  if (input.value.trim() === "") {
-    alert("Please enter a task");
-    return;
-  }
-
-  tasks.push(input.value);
-  input.value = "";
-  showTasks();
-}
-
-function deleteTask(index) {
-  tasks.splice(index, 1);
-  showTasks();
-}
-
-showTasks();
