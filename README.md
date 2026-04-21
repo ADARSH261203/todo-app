@@ -5,9 +5,13 @@ This is a simple task management web application.
 ## Features
 - Add tasks
 - Delete tasks
-- Data saved using Local Storage
+- Mark as complete
 
 ## Technologies Used
 - HTML
 - CSS
 - JavaScript
+
+## Author
+Adarsh Pandey
+
